@@ -197,5 +197,8 @@
     <ClInclude Include="src\utility.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\bridge.h">
+      <Filter>Quelldateien</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

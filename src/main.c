@@ -14,6 +14,7 @@
  */
 
 #include "espresso.h"
+#include "bridge.h"
 #include "main.h"		/* table definitions for options */
 #include <string.h>
 #include <stdio.h>
