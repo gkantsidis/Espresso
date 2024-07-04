@@ -294,10 +294,10 @@ pset_family sf_new(int num, int size)
 {
     pset_family A;
     if (set_family_garbage == NULL) {
-  A = ALLOC(set_family_t, 1);
+    	A = ALLOC(set_family_t, 1);
     } else {
-  A = set_family_garbage;
-  set_family_garbage = A->next;
+    	A = set_family_garbage;
+    	set_family_garbage = A->next;
     }
     A->sf_size = size;
     A->wsize = SET_SIZE(size);
