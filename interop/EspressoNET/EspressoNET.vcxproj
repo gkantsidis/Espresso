@@ -21,10 +21,11 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Espresso.vcxproj">
       <Project>{c66d6ca2-8fa5-4512-8f14-2311a3bd7e1b}</Project>
-      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="externals.h" />
     <ClInclude Include="SetFamily.h" />
   </ItemGroup>
   <ItemGroup>

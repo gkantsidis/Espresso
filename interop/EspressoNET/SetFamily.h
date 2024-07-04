@@ -1,9 +1,14 @@
 #pragma once
 
-#include <espresso.h>
+#include "externals.h"
 
 // ReSharper disable once CppInconsistentNaming
-ref class SetFamily sealed
+namespace Espresso
+{
+	
+
+// ReSharper disable once CppInconsistentNaming
+public ref class SetFamily sealed
 {
 public:
 	static void cleanup()
@@ -38,3 +43,4 @@ private:
 	bool disposed_;
 };
 
+}
