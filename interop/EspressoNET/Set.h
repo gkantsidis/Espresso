@@ -2,6 +2,10 @@
 
 #include "externals.h"
 
+using System::ArgumentOutOfRangeException;
+using System::String;
+using System::Text::StringBuilder;
+
 // ReSharper disable once CppInconsistentNaming
 namespace Espresso
 {
@@ -14,7 +18,7 @@ public:
     {
         if (size <= 0)
         {
-            throw gcnew System::ArgumentOutOfRangeException("size", size, "Size must be positive");
+            throw gcnew ArgumentOutOfRangeException("size", size, "Size must be positive");
         }
 
         this->set_ = set_new(size);
@@ -43,13 +47,14 @@ public:
             set_free(set_);
             set_ = nullptr;
         }
+        size_ = 0;
     }
 
     static Set^ mk_full(const int size)
     {
         if (size <= 0)
         {
-            throw gcnew System::ArgumentOutOfRangeException("size", size, "Size must be positive");
+            throw gcnew ArgumentOutOfRangeException("size", size, "Size must be positive");
         }
 
         return gcnew Set(set_full(size), size);
@@ -65,13 +70,15 @@ public:
         return gcnew Set(set_save(set_), size_);
     }
 
+    int size() { return size_; }
+
     bool is_set(const int element)
     {
         if (!is_valid(element))
         {
             return false;
         }
-        return is_in_set(set_, element);
+        return is_in_set(set_, element) > 0;
     }
 
     bool add(const int element)
@@ -93,6 +100,9 @@ public:
         set_remove(set_, element);
         return false;
     }
+
+    void append(StringBuilder^ sb);
+    String^ ToString() override;
 
 internal:
     pset get_set()

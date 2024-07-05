@@ -3,6 +3,7 @@
 #include <mutex>
 
 #include "externals.h"
+#include "Set.h"
 
 using System::Text::StringBuilder;
 using System::Threading::Monitor;
@@ -66,6 +67,9 @@ namespace Espresso
             sf_active(set_);
             return this;
         }
+
+        SetFamily^ add(Set^ set);
+        SetFamily^ del(int i);
 
         static SetFamily^ espresso(SetFamily^ f, SetFamily^ d1, SetFamily^ r);
 

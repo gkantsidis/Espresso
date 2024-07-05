@@ -92,6 +92,18 @@ SetFamily::!SetFamily()
     set_ = nullptr;
 }
 
+SetFamily^ SetFamily::add(Set^ set)
+{
+    sf_addset(this->set_, set->get_set());
+    return this;
+}
+
+SetFamily^ SetFamily::del(int i)
+{
+    sf_delset(this->set_, i);
+    return this;
+}
+
 SetFamily^ SetFamily::espresso(SetFamily^ f, SetFamily^ d1, SetFamily^ r)
 {
     // TODO: Figure out whether we need to lock for this call.
@@ -111,14 +123,7 @@ void SetFamily::append(StringBuilder^ sb)
 
         for (int j=0; j < sf_size; j++)
         {
-	        if (is_in_set(p, j))
-	        {
-                sb->Append("1");
-	        }
-        	else
-        	{
-                sb->Append("0");
-        	}
+            sb->Append(is_in_set(p, j) ? "1" : "0");
         }
         sb->AppendLine();
     }
