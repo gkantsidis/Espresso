@@ -2,9 +2,9 @@
 
 open Espresso
 
-Runtime.enable_tracing()
-Runtime.enable_verbose_debug()
-Runtime.set_debug_level(5)
+Runtime.FullDebug()
+
+
 
 let myset = new Set(10)
 myset.size()

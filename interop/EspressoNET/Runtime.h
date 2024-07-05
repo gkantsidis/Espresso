@@ -2,6 +2,8 @@
 
 #include "externals.h"
 
+using System::Boolean;
+
 // ReSharper disable once CppInconsistentNaming
 namespace Espresso
 {
@@ -10,49 +12,207 @@ namespace Espresso
 	public ref class Runtime sealed
 	{
 	public:
-		static void enable_tracing()
+		static property int DebugLevel
 		{
-			trace = 1;
+			int get()
+			{
+				return debug;
+			}
+			void set(const int value)
+			{
+				debug = value;
+			}
 		}
 
-		static void disable_tracing()
+		static property Boolean VerboseDebug
 		{
-			trace = 0;
+			Boolean get()
+			{
+				return verbose_debug ? true : false;
+			}
+			void set(const Boolean value)
+			{
+				verbose_debug = value;
+			}
 		}
 
-		static void enable_summary()
+		static property Boolean EchoComments
 		{
-			summary = 1;
+			Boolean get()
+			{
+				return echo_comments ? true : false;
+			}
+			void set(const Boolean value)
+			{
+				echo_comments = value;
+			}
 		}
 
-		static void disable_summary()
+		static property Boolean EchoUnknownCommands
 		{
-			summary = 0;
+			Boolean get()
+			{
+				return echo_unknown_commands ? true : false;
+			}
+			void set(const Boolean value)
+			{
+				echo_unknown_commands = value;
+			}
 		}
 
-		static void enable_random_order()
+		static property Boolean ForceIrredundant
 		{
-			use_random_order = 1;
+			Boolean get()
+			{
+				return force_irredundant ? true : false;
+			}
+			void set(const Boolean value)
+			{
+				force_irredundant = value;
+			}
 		}
 
-		static void disable_random_order()
+		static property Boolean SkipMakeSparse
 		{
-			use_random_order = 0;
+			Boolean get()
+			{
+				return skip_make_sparse ? true : false;
+			}
+			void set(const Boolean value)
+			{
+				skip_make_sparse = value;
+			}
 		}
 
-		static void enable_verbose_debug()
+		static property Boolean KissOption
 		{
-			verbose_debug = 1;
+			Boolean get()
+			{
+				return kiss ? true : false;
+			}
+			void set(const Boolean value)
+			{
+				kiss = value;
+			}
 		}
 
-		static void disable_verbose_debug()
+		static property Boolean PosOption
 		{
-			verbose_debug = 0;
+			Boolean get()
+			{
+				return pos ? true : false;
+			}
+			void set(const Boolean value)
+			{
+				pos = value;
+			}
 		}
 
-		static void set_debug_level(const int level)
+		static property Boolean PrintSolution
 		{
-			debug = level;
+			Boolean get()
+			{
+				return print_solution ? true : false;
+			}
+			void set(const Boolean value)
+			{
+				print_solution = value;
+			}
+		}
+
+		static property Boolean RecomputeOnSet
+		{
+			Boolean get()
+			{
+				return recompute_onset ? true : false;
+			}
+			void set(const Boolean value)
+			{
+				recompute_onset = value;
+			}
+		}
+
+		static property Boolean RemoveEssential
+		{
+			Boolean get()
+			{
+				return remove_essential ? true : false;
+			}
+			void set(const Boolean value)
+			{
+				remove_essential = value;
+			}
+		}
+
+		static property Boolean SingleExpand
+		{
+			Boolean get()
+			{
+				return single_expand ? true : false;
+			}
+			void set(const Boolean value)
+			{
+				single_expand = value;
+			}
+		}
+
+		static property Boolean PrintSummary
+		{
+			Boolean get()
+			{
+				return summary ? true : false;
+			}
+			void set(const Boolean value)
+			{
+				summary = value;
+			}
+		}
+
+		static property Boolean Trace
+		{
+			Boolean get()
+			{
+				return trace ? true : false;
+			}
+			void set(const Boolean value)
+			{
+				trace = value;
+			}
+		}
+
+		static property Boolean UnwrapOnSet
+		{
+			Boolean get()
+			{
+				return unwrap_onset ? true : false;
+			}
+			void set(const Boolean value)
+			{
+				unwrap_onset = value;
+			}
+		}
+
+		static property Boolean RandomOrder
+		{
+			Boolean get()
+			{
+				return use_random_order ? true : false;
+			}
+			void set(const Boolean value)
+			{
+				use_random_order = value;
+			}
+		}
+
+		static void FullDebug()
+		{
+			EchoComments = true;
+			EchoUnknownCommands = true;
+			PrintSolution = true;
+			PrintSummary = true;
+			Trace = true;
+			// TODO: What are the debug levels?
+			DebugLevel = 5;
 		}
 	};
 
