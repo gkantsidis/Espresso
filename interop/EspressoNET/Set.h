@@ -52,7 +52,7 @@ public:
             throw gcnew System::ArgumentOutOfRangeException("size", size, "Size must be positive");
         }
 
-        return gcnew Set(set_full(size));
+        return gcnew Set(set_full(size), size);
     }
 
     static Set^ mk_empty(const int size)
@@ -65,9 +65,9 @@ public:
         return gcnew Set(set_save(set_), size_);
     }
 
-    bool is_in_set(const int element)
+    bool is_set(const int element)
     {
-        if (element < 0 || set_ == nullptr)
+        if (!is_valid(element))
         {
             return false;
         }
@@ -76,20 +76,28 @@ public:
 
     bool add(const int element)
     {
-        if (element < 0 || set_ == nullptr)
+        if (!is_valid(element))
         {
             return false;
         }
-        return set_insert(set_, element);
+        set_insert(set_, element);
+        return true;
     }
 
     bool remove(const int element)
     {
-        if (element < 0 || set_ == nullptr)
+        if (!is_valid(element))
         {
             return false;
         }
-        return set_remove(set_, element);
+        set_remove(set_, element);
+        return false;
+    }
+
+internal:
+    pset get_set()
+    {
+        return set_;
     }
 
 private:

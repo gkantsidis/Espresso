@@ -6,18 +6,18 @@ using System::Object;
 namespace Espresso
 {
 
-    void SetFamilyGarbage::cleanup()
+void SetFamilyGarbage::cleanup()
+{
+    enter();
+    try
     {
-        enter();
-        try
-        {
-            sf_cleanup();
-        }
-        finally
-        {
-            exit();
-        }
+        sf_cleanup();
     }
+    finally
+    {
+        exit();
+    }
+}
 
 SetFamily::SetFamily(const int number_of_sets, const int number_of_set_elements)
 {
@@ -56,11 +56,23 @@ SetFamily::SetFamily(const SetFamily^ set)
     try
     {
         this->set_ = sf_save(set->set_);
+        this->disposed_ = false;
     }
     finally
     {
         SetFamilyGarbage::exit();
     }
+}
+
+Espresso::SetFamily::SetFamily(const pset_family set)
+{
+    if (set == nullptr)
+    {
+	    throw gcnew System::ArgumentNullException("set", "Set must not be null");
+    }
+
+    this->set_ = set;
+    this->disposed_ = false;
 }
 
 SetFamily::!SetFamily()
@@ -78,6 +90,48 @@ SetFamily::!SetFamily()
         }
     }
     set_ = nullptr;
+}
+
+SetFamily^ SetFamily::espresso(SetFamily^ f, SetFamily^ d1, SetFamily^ r)
+{
+    // TODO: Figure out whether we need to lock for this call.
+    auto cover = espresso(f, d1, r);
+    return gcnew SetFamily(cover);
+}
+
+void SetFamily::append(StringBuilder^ sb)
+{
+    pset p = this->set_->data;
+    const auto increment = this->set_->wsize;
+    const auto sf_size = this->set_->sf_size;
+
+    for(int i=0; i < this->set_->count; p += increment, i++)
+    {
+        sb->AppendFormat("[{0:4}] ", i);
+
+        for (int j=0; j < sf_size; j++)
+        {
+	        if (is_in_set(p, j))
+	        {
+                sb->Append("1");
+	        }
+        	else
+        	{
+                sb->Append("0");
+        	}
+        }
+        sb->AppendLine();
+    }
+}
+
+System::String^ SetFamily::ToString()
+{
+    auto sb = gcnew StringBuilder();
+    this->append(sb);
+    auto str = sb->ToString();
+
+    // TODO: Consider to return a subset of the string str, if it is unreasonable large
+    return str;
 }
 
 }
