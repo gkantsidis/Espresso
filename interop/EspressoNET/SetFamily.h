@@ -1,46 +1,68 @@
 #pragma once
 
+#include <mutex>
+
 #include "externals.h"
+
+using System::Threading::Monitor;
 
 // ReSharper disable once CppInconsistentNaming
 namespace Espresso
 {
-	
+    /// <summary>
+    /// TODO: Add class summary
+    /// <</summary>
+    // ReSharper disable once CppInconsistentNaming
+    public ref class SetFamilyGarbage sealed
+    {
+    public:
+        static void cleanup();
 
-// ReSharper disable once CppInconsistentNaming
-public ref class SetFamily sealed
-{
-public:
-	static void cleanup()
-	{
-		sf_cleanup();
-	}
+        static void enter()
+        {
+            Monitor::Enter(lock_);
+        }
 
-	SetFamily(const int number_of_sets, const int number_of_set_elements);
+        static void exit()
+        {
+            Monitor::Exit(lock_);
+        }
 
-	~SetFamily()
-	{
-		if (disposed_)
-		{
-			return;
-		}
-		this->!SetFamily();
+    private:
+        // ReSharper disable once CppUseAuto
+        static Object^ lock_ = gcnew Object();
+    };
 
-		disposed_ = true;
-	}
+    /// <summary>
+    /// TODO: Add class summary
+    /// </summary>
+    // ReSharper disable once CppInconsistentNaming
+    public ref class SetFamily sealed
+    {
+    public:
+        SetFamily(const int number_of_sets, const int number_of_set_elements);
+        SetFamily(const SetFamily^ set);
 
-	!SetFamily()
-	{
-		if (set_ != nullptr)
-		{
-			sf_free(set_);
-		}
-		set_ = nullptr;
-	}
+        ~SetFamily()
+        {
+            if (disposed_)
+            {
+                return;
+            }
+            this->!SetFamily();
+            disposed_ = true;
+        }
 
-private:
-	pset_family set_;
-	bool disposed_;
-};
+        !SetFamily();
+
+        SetFamily^ clone()
+        {
+            return gcnew SetFamily(this);
+        }
+
+    private:
+        pset_family set_;
+        bool disposed_;
+    };
 
 }
