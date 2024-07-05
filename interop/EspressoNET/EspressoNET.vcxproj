@@ -26,10 +26,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="externals.h" />
+    <ClInclude Include="Runtime.h" />
     <ClInclude Include="Set.h" />
     <ClInclude Include="SetFamily.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Runtime.cpp" />
     <ClCompile Include="Set.cpp" />
     <ClCompile Include="SetFamily.cpp" />
   </ItemGroup>

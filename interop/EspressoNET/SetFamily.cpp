@@ -104,10 +104,11 @@ SetFamily^ SetFamily::del(int i)
     return this;
 }
 
-SetFamily^ SetFamily::espresso(SetFamily^ f, SetFamily^ d1, SetFamily^ r)
+// ReSharper disable once CppInconsistentNaming
+SetFamily^ SetFamily::Espresso(SetFamily^ f, SetFamily^ d1, SetFamily^ r)
 {
     // TODO: Figure out whether we need to lock for this call.
-    auto cover = espresso(f, d1, r);
+    const auto cover = espresso(f->set_, d1->set_, r->set_);
     return gcnew SetFamily(cover);
 }
 

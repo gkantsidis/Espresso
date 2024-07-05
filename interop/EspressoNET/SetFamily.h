@@ -71,7 +71,8 @@ namespace Espresso
         SetFamily^ add(Set^ set);
         SetFamily^ del(int i);
 
-        static SetFamily^ espresso(SetFamily^ f, SetFamily^ d1, SetFamily^ r);
+        // ReSharper disable once CppInconsistentNaming
+        static SetFamily^ Espresso(SetFamily^ f, SetFamily^ d1, SetFamily^ r);
 
         void append(StringBuilder^ sb);
 
