@@ -26,9 +26,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="externals.h" />
+    <ClInclude Include="Set.h" />
     <ClInclude Include="SetFamily.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Set.cpp" />
     <ClCompile Include="SetFamily.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

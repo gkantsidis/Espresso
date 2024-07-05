@@ -41,6 +41,8 @@ SetFamily::SetFamily(const int number_of_sets, const int number_of_set_elements)
     {
         SetFamilyGarbage::exit();
     }
+
+    this->disposed_ = false;
 }
 
 SetFamily::SetFamily(const SetFamily^ set)
