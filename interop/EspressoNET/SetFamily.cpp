@@ -136,7 +136,7 @@ System::String^ SetFamily::ToString()
     this->append(sb);
     auto str = sb->ToString();
 
-    // TODO: Consider to return a subset of the string str, if it is unreasonable large
+    // TODO: Consider to return a subset of the string str, when the string is unreasonable large
     return str;
 }
 

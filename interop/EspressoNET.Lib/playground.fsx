@@ -1,8 +1,14 @@
 ﻿#r @"..\..\x64\Debug\EspressoNET.dll"
 
+open System.IO
 open Espresso
 
 Runtime.FullDebug()
+
+let SAMPLES = Path.Combine(__SOURCE_DIRECTORY__, "samples")
+
+let sample_file_1 = "temp.in"
+
 
 
 

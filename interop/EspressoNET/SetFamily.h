@@ -76,7 +76,7 @@ namespace Espresso
 
         void append(StringBuilder^ sb);
 
-        System::String^ ToString() override;
+        String^ ToString() override;
 
     private:
         pset_family set_;
