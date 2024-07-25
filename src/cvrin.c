@@ -604,7 +604,7 @@ int read_pla(FILE *fp, int needs_dcset, int needs_offset, int pla_type, pPLA *PL
 
   return 1;
 }
-
+
 void PLA_summary(pPLA PLA)
 {
     int var, i;
