@@ -1,10 +1,12 @@
 #pragma once
 
-#include <mutex>
+#ifndef SET_FAMILY
+#define SET_FAMILY
 
 #include "externals.h"
 #include "Set.h"
 
+using System::Boolean;
 using System::Text::StringBuilder;
 using System::Threading::Monitor;
 
@@ -44,6 +46,7 @@ namespace Espresso
     public:
         SetFamily(const int number_of_sets, const int number_of_set_elements);
         SetFamily(const SetFamily^ set);
+        //SetFamily(const SetFamily% rhs) {}
 
         ~SetFamily()
         {
@@ -78,11 +81,14 @@ namespace Espresso
 
         String^ ToString() override;
 
+    internal:
+        SetFamily(const pset_family set);
+
     private:
         pset_family set_;
-        bool disposed_;
-
-        SetFamily(const pset_family set);
+        Boolean disposed_;
     };
 
 }
+
+#endif

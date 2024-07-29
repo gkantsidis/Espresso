@@ -26,11 +26,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="externals.h" />
+    <ClInclude Include="PLA.h" />
     <ClInclude Include="Runtime.h" />
     <ClInclude Include="Set.h" />
     <ClInclude Include="SetFamily.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FileIO.cpp" />
+    <ClCompile Include="PLA.cpp" />
     <ClCompile Include="Runtime.cpp" />
     <ClCompile Include="Set.cpp" />
     <ClCompile Include="SetFamily.cpp" />
@@ -98,7 +101,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions);_ALLOW_KEYWORD_MACROS</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -114,7 +117,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions);_ALLOW_KEYWORD_MACROS</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -130,7 +133,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions);_ALLOW_KEYWORD_MACROS</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -146,7 +149,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions);_ALLOW_KEYWORD_MACROS</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>

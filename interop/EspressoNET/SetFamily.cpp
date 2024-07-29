@@ -120,7 +120,7 @@ void SetFamily::append(StringBuilder^ sb)
 
     for(int i=0; i < this->set_->count; p += increment, i++)
     {
-        sb->AppendFormat("[{0:4}] ", i);
+        sb->AppendFormat("[{0:D4}] ", i+1);
 
         for (int j=0; j < sf_size; j++)
         {

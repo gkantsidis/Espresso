@@ -6,12 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="samples\temp.in" />
     <Compile Include="Library.fs" />
+    <None Include="common.fsx" />
     <None Include="playground.fsx" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="samples\" />
+    <None Include="read_pla.fsx" />
   </ItemGroup>
 
 </Project>

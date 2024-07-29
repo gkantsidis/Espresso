@@ -3,6 +3,7 @@
 #include "externals.h"
 
 using System::ArgumentOutOfRangeException;
+using System::Boolean;
 using System::String;
 using System::Text::StringBuilder;
 
@@ -72,7 +73,7 @@ public:
 
     int size() { return size_; }
 
-    bool is_set(const int element)
+    Boolean is_set(const int element)
     {
         if (!is_valid(element))
         {
@@ -81,7 +82,7 @@ public:
         return is_in_set(set_, element) > 0;
     }
 
-    bool add(const int element)
+    Boolean add(const int element)
     {
         if (!is_valid(element))
         {
@@ -91,7 +92,7 @@ public:
         return true;
     }
 
-    bool remove(const int element)
+    Boolean remove(const int element)
     {
         if (!is_valid(element))
         {
@@ -113,7 +114,7 @@ internal:
 private:
     pset set_;
     int size_;
-    bool disposed_;
+    Boolean disposed_;
 
     Set(const pset set, const int size)
     {
@@ -122,7 +123,7 @@ private:
         this->disposed_ = false;
     }
 
-    bool is_valid(const int element)
+    Boolean is_valid(const int element)
     {
         return element >= 0 && set_ != nullptr;
     }

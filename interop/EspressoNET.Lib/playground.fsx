@@ -1,15 +1,9 @@
-﻿#r @"..\..\x64\Debug\EspressoNET.dll"
+﻿#load "common.fsx"
 
-open System.IO
+open Common
 open Espresso
 
 Runtime.FullDebug()
-
-let SAMPLES = Path.Combine(__SOURCE_DIRECTORY__, "samples")
-
-let sample_file_1 = "temp.in"
-
-
 
 
 let myset = new Set(10)
@@ -41,3 +35,4 @@ let x1 = new SetFamily(4, 8)
 let x2 = new SetFamily(4, 8)
 // The following crashes
 let oo = SetFamily.Espresso(sf, x1, x2)
+
