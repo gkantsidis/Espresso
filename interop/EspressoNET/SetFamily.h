@@ -81,6 +81,51 @@ namespace Espresso
 
         String^ ToString() override;
 
+        /* The following expose the internal members of the
+         * native structure. This is used to understand and
+         * debug the interface
+         */
+
+        property int InternalSizeInIntegers
+        {
+	        int get()
+	        {
+                return this->set_->wsize;
+	        }
+        }
+
+        property int InternalUserDeclaredSetSize
+        {
+	        int get()
+	        {
+                return this->set_->sf_size;
+	        }
+        }
+
+        property int InternalCapacity
+        {
+	        int get()
+	        {
+                return this->set_->capacity;
+	        }
+        }
+
+        property int InternalCount
+        {
+	        int get()
+	        {
+                return this->set_->count;
+	        }
+        }
+
+        property int InternalActiveCount
+        {
+	        int get()
+	        {
+                return this->set_->active_count;
+	        }
+        }
+
     internal:
         SetFamily(const pset_family set);
 

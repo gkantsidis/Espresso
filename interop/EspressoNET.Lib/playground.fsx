@@ -3,36 +3,14 @@
 open Common
 open Espresso
 
-Runtime.FullDebug()
 
+let example = get_example "tcheck"
+let pla = Readers.read_pla_from_file(example, true, true, PLAType.fd)
 
-let myset = new Set(10)
-myset.size()
-
-myset.ToString()
-
-myset.is_set(3)
-
-myset.add(3)
-myset.is_set(3)
-myset.ToString()
-
-myset.Dispose()
-
-myset.add(5)
-myset.is_set(5)
-myset.ToString()
-
-let myset2 = new Set(8);
-let myset3 = new Set(8);
-
-let sf = new SetFamily(4, 8)
-sf.add(myset2).add(myset3)
-sf.make_all_active()
-printfn "\n%s\n" (sf.ToString())
-
-let x1 = new SetFamily(4, 8)
-let x2 = new SetFamily(4, 8)
-// The following crashes
-let oo = SetFamily.Espresso(sf, x1, x2)
+let on_set = pla.on_set()
+let off_set = pla.off_set()
+let do_not_care_set = pla.do_not_care_set()
+printf "On set:\n%A\n-------------\n" on_set
+printf "Off set:\n%A\n-------------\n" off_set
+printf "Do not care set\n%A\n-------------\n" do_not_care_set
 

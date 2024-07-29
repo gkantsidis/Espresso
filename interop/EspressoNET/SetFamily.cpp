@@ -118,6 +118,11 @@ void SetFamily::append(StringBuilder^ sb)
     const auto increment = this->set_->wsize;
     const auto sf_size = this->set_->sf_size;
 
+    sb->AppendFormat(
+        "Set [Sizes: integers={0:D4}, user declared={1:D4}, capacity={2:D4}, count={3:D4}, active={4:D4}]:\n",
+        this->InternalSizeInIntegers, this->InternalUserDeclaredSetSize,
+        this->InternalCapacity, this->InternalCount, this->InternalActiveCount
+        );
     for(int i=0; i < this->set_->count; p += increment, i++)
     {
         sb->AppendFormat("[{0:D4}] ", i+1);
