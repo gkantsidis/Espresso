@@ -25,6 +25,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cube.h" />
     <ClInclude Include="externals.h" />
     <ClInclude Include="PLA.h" />
     <ClInclude Include="Runtime.h" />
@@ -32,6 +33,7 @@
     <ClInclude Include="SetFamily.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Cube.cpp" />
     <ClCompile Include="FileIO.cpp" />
     <ClCompile Include="PLA.cpp" />
     <ClCompile Include="Runtime.cpp" />

@@ -14,6 +14,14 @@ printf "\n%A\n" on_set
 printf "\n%A\n" off_set
 printf "\n%A\n" do_not_care_set
 
+CubeInformation.NumberOfVariables
+CubeInformation.NumberOfBinaryVariables
+CubeInformation.NumberOfActiveVariables
+CubeInformation.Size
+CubeInformation.NumberOfUnateVariables
+CubeInformation.BestBinateVariable
+let xx = CubeInformation.OutputVariable |> Option.ofNullable
+
 let result = pla.run_espresso()
 pla.summary()
 printf "\n%A\n" result
